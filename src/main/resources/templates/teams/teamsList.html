@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Teams</title>
+</head>
+<body>
+<table>
+
+  <tr>
+    <th>Name</th>
+    <th>Searching?</th>
+  </tr>
+
+  <tr th:each="team:${teamsList}">
+    <td th:text="${team.getName()}">
+    <td th:text="${team.isSearching()}"/>
+    <td> <a th:href="@{team/{id}(id=${team.getId()})}">Profile</a> </td>
+    <td> <a th:href="@{team/delete/{id}(id=${team.id})}">Delete</a></td>
+
+
+  </tr>
+</table>
+<p><a th:href="@{/home}">Home</a> </p>
+
+</body>
+</html>

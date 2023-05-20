@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/update/{id}(id=${player.getId()})}" th:object="${player}" method="post">
+  <p>Nickname<input type="text" th:field="*{nickname}"></p>
+  <p>Age<input type="number" min="15" max="99" th:field="*{age}"></p>
+  <p>Position<select id="position" name="position">
+    <option th:value = "riffle" th:text="Riffle"/>
+    <option th:value = "sniper" th:text="Sniper"/>
+    <option th:value = "igl" th:text="IGL"/>
+  </select>
+  </p>
+  <p>Searching for team<select id="searching" name="searching">
+    <option th:value="true" th:text="yes"/>
+    <option th:value="false" th:text="no"/>
+  </select>
+  </p>
+  <p>Steam profile link<input type="text" th:field="*{steam}"></p>
+  <p>Faceit profile link<input type="text" th:field="*{faceit}"></p>
+  <p><input type="submit"> <input type="reset"></p>
+</form>
+<p><a th:href="@{/home}">Home</a> </p>
+</body>
+</html>

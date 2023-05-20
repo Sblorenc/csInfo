@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+
+  <tr>
+    <th>Nickname</th>
+    <th>Age</th>
+    <th>Position</th>
+    <th>Searching?</th>
+  </tr>
+
+  <tr th:each="player:${playersList}">
+    <td th:text="${player.getNickname()}"/>
+    <td th:text="${player.getAge()}"/>
+    <td th:text="${player.getPos()}"/>
+    <td th:text="${player.search}"/>
+    <td th:hidden="${player.id}"/>
+    <td><a th:href="@{players/{id}(id=${player.getId()})}">Profile</a></td>
+    <td><a th:href="@{delete/{id}(id=${player.getId()})}">Delete</a> </td>
+  </tr>
+</table>
+<p><a th:href="@{/home}">Home</a> </p>
+
+</body>
+</html>

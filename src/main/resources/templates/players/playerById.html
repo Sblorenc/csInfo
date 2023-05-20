@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Nickname</th>
+        <th>Age</th>
+        <th>Position</th>
+        <th>Searching?</th>
+        <th>Team</th>
+        <th>Steam</th>
+        <th>Faceit</th>
+    </tr>
+    <tr>
+        <td th:text="${player.getNickname()}"/>
+        <td th:text="${player.getAge()}"/>
+        <td th:text="${player.getPos()}"/>
+        <td th:text="${player.search}"/>
+        <td>
+            <span th:unless="${player.getTeam()!=null}">No team</span>
+            <span th:if="${player.getTeam()!=null}" th:href="@{/team/{id}(id=${player.getTeam().getId()})}" th:text="${player.getTeam().getName()}"></span>
+        </td>
+        <td> <a th:href="${player.getSteam()}">Steam</a> </td>
+        <td> <a th:href="${player.getFaceit()}">Faceit</a></td>
+        <td><a th:href="@{/update/{id}(id=${player.getId()})}">Update</a></td>
+    </tr>
+</table>
+<p><a th:href="@{/home}">Home</a> </p>
+</body>
+</html>

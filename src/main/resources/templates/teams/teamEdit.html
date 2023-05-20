@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Team Form</h1>
+<form action="#" th:action="@{/teams/update/{id}(id=${team.getId()})}" th:object="${team}" method="post">
+  <p>Name<input type="text" th:field="*{name}"></p>
+  <p>Searching for player<select id="searching" name="searching">
+    <option th:value="true" th:text="yes"/>
+    <option th:value="false" th:text="no"/>
+  </select>
+  </p>
+  <p>ESEA team profile<input type="text" th:field="*{esea}"></p>
+  <p><input type="submit"> <input type="reset"></p>
+</form>
+<p><a th:href="@{/home}">Home</a> </p>
+
+</body>
+</html>

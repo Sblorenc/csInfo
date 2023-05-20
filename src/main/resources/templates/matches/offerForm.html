@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Offer</title>
+</head>
+<body>
+<form action="#" th:action="@{/offerForm}" th:object="${teams}" method="post">
+
+  <p>Team1<select id="team1" name="team1">
+    <option th:each="team:${teams}" th:value="${team.getId()}" th:text="${team.getName()}"></option>
+  </select>
+  </p>
+  <p>Team2<select id="team2" name="team2">
+    <option th:each="team:${teams}" th:value="${team.getId()}" th:text="${team.getName()}"></option>
+  </select>
+  </p>
+  <p>
+  <input type="date" id="date" name="date" th:max="${maxDate}" th:min="${minDate}">
+  </p>
+  <p>
+    <input type="time" id="time" name="time" th:max=13 th:min=13>
+  </p>
+
+  <p><input type="submit"></p>
+</form>
+</body>
+</html>

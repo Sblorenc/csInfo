@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Team</title>
+</head>
+<body>
+<table>
+<tr>
+  <th>Name</th>
+  <th>Searching?</th>
+  <th>Esea</th>
+  <th>Update</th>
+</tr>
+<tr>
+    <td th:text="${team.getName()}"/>
+    <td th:text="${team.isSearching()}"/>
+    <td> <a th:href="${team.getEsea()}">Esea</a> </td>
+    <td><a th:href="@{/teams/update/{id}(id=${team.getId()})}">Update</a></td>
+</tr>
+</table>
+<table>
+    <tr>
+        <th>Players</th>
+    </tr>
+    <tr th:each="player:${players}">
+        <td th:text="${player.getNickname()}"/>
+        <td><a th:href="@{/players/{id}(id=${player.getId()})}">Payer profile</a></td>
+    </tr>
+</table>
+<p><a th:href="@{/home}">Home</a> </p>
+<table>
+    <th>Matches</th>
+    <tr>
+        <th>Team1</th>
+        <th>Team2</th>
+        <th>Date</th>
+        <th>Time</th>
+    </tr>
+    <tr th:each="match:${matches}">
+        <td th:each="t:${match.getTeamList()}" th:text="${t.getName()}"></td>
+        <td th:text="${match.getDate()}"></td>
+        <td th:text="${match.getTime()}"></td>
+        <td><a th:href="@{/matches/delete/{id}(id=${match.getId()})}">Cancel</a> </td>
+    </tr>
+</table>
+</body>
+</html>
